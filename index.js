@@ -1,7 +1,6 @@
 require('dotenv').config()
 var express = require('express')
 const Binance = require('node-binance-api');
-const fs = require('fs');
 
 var app = express();
 
@@ -25,7 +24,8 @@ async function cancelOpenOrders() {
 async function loadPairs() {
     const path = './pairs.csv';
     try {
-        const pairs = await fs.readFileSync(path)?.toString().split('\n');
+        const pairs = await process.env.PAIRS.split(',');
+        console.log(pairs)
         if(!pairs?.length) {
             throw new Error(`No pair in ${path} file.`)
         }

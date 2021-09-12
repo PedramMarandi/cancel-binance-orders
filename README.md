@@ -1,6 +1,4 @@
-Open `.env` file and replace your Binance credentials.
-
-You can enter your pairs in `pairs.csv` file. This works on Future only. 
+Open `.env` file and replace your Binance credentials and your pairs comma separated `PAIRS=ETHUSDT,BTCUSDT`.
 
 Run `npm install` first and then use `npm run start` to run the app. 
 
