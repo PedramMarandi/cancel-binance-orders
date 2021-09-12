@@ -1,3 +1,4 @@
+require('dotenv').config()
 var express = require('express')
 const Binance = require('node-binance-api');
 const fs = require('fs');
@@ -5,8 +6,8 @@ const fs = require('fs');
 var app = express();
 
 const binance = new Binance().options({
-    APIKEY: '',
-    APISECRET: ''
+    APIKEY: process.env.APIKEY,
+    APISECRET: process.env.APISECRET
 });
 
 async function cancelOpenOrders() {
@@ -39,7 +40,12 @@ const port = process.env.PORT || 4020;
 app.listen(port, () => {
     console.log(`Example app listening at http://localhost:${port}`)
 });
-app.post('/cancel-orders', async function (req, res) {
-    await cancelOpenOrders();
+app.get('/', async function (req, res) {
+    try {
+        await cancelOpenOrders();
+        res.send({ success: true, error: null })
+    }catch(e) {
+        res.send({ success: false, error: e.message })
+    }
 });
 
