@@ -23,12 +23,11 @@ async function cancelOpenOrders() {
 }
 
 async function loadPairs() {
-    const path = './pairs.csv';
     try {
         const pairs = await process.env.PAIRS.split(',');
         console.log(pairs)
         if(!pairs?.length) {
-            throw new Error(`No pair in ${path} file.`)
+            throw new Error(`No pair in the .env file.`)
         }
         return pairs;
     } catch(e) {
