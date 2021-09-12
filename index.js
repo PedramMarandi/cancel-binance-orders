@@ -17,6 +17,7 @@ async function cancelOpenOrders() {
         } catch(e) {
             console.log(`Error whilst cancelling orders for pair ${pair}`)
             console.log(e);
+            throw e;
         }
     }
 }
@@ -44,7 +45,7 @@ app.post('/cancel-orders', async function (req, res) {
     try {
         await cancelOpenOrders();
         res.send({ success: true, error: null })
-    }catch(e) {
+    } catch(e) {
         res.send({ success: false, error: e.message })
     }
 });
