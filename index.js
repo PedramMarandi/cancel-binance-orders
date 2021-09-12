@@ -40,7 +40,7 @@ const port = process.env.PORT || 4020;
 app.listen(port, () => {
     console.log(`Example app listening at http://localhost:${port}`)
 });
-app.get('/', async function (req, res) {
+app.post('/cancel-orders', async function (req, res) {
     try {
         await cancelOpenOrders();
         res.send({ success: true, error: null })
