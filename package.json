@@ -1,0 +1,17 @@
+{
+  "name": "cancel-binance-orders",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js"
+  },
+  "author": "Pedram Marandi",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "node-binance-api": "^0.13.0",
+    "nodemon": "^2.0.12",
+    "papaparse": "^5.3.1"
+  }
+}
